@@ -7,14 +7,14 @@ public class Main {
     public static void main(String[] args) throws IOException {
         FileInputStream fileInputStream = new FileInputStream("InputData/a_an_example.in.txt");
         Scanner scanner = new Scanner(fileInputStream);
-
+        String[] assignedcontributors = new String[100];
         String[] allLines = new String[100];
         int k = 0;
         while (scanner.hasNextLine()) {
-//            System.out.println(scanner.nextLine());      //returns the line that was skipped
+            // System.out.println(scanner.nextLine()); //returns the line that was skipped
             allLines[k++] = scanner.nextLine();
         }
-        scanner.close();     //closes the scanner
+        scanner.close(); // closes the scanner
 
         int numberOfContributors = Integer.parseInt(String.valueOf(allLines[0].charAt(0)));
         int numberOfProjects = Integer.parseInt(String.valueOf(allLines[0].charAt(2)));
@@ -41,7 +41,7 @@ public class Main {
             nextContributorPosition += skillCount + 1;
         }
 
-//        System.out.println(Arrays.toString(contributors));
+        // System.out.println(Arrays.toString(contributors));
 
         // Reading projects
         int nextProjectPosition = nextContributorPosition;
@@ -55,7 +55,7 @@ public class Main {
             int score = Integer.parseInt(temp[2]);
             int bestBefore = Integer.parseInt(temp[3]);
             int reqContributors = Integer.parseInt(temp[4]);
-            double decidingFactor = (double)score/days;
+            double decidingFactor = (double) score / days;
             Skill[] reqSkills = new Skill[reqContributors];
 
             for (int j = 0; j < reqContributors; j++) {
@@ -65,9 +65,31 @@ public class Main {
                 reqSkills[j] = new Skill(skillName, skillLevel);
             }
 
-            projects[i] = new Project(name, days, score, bestBefore, decidingFactor, reqContributors,  reqSkills);
+            projects[i] = new Project(name, days, score, bestBefore, decidingFactor, reqContributors, reqSkills);
+
         }
 
         System.out.println(Arrays.toString(projects));
+
+        Project selectproject = projects[3]; // webchat
+
+        for (int z = 0; z < selectproject.requiredSkills.length; z++) {
+            Skill reqskills = selectproject.requiredSkills[z];
+
+            for (int i = 0; i < numberOfContributors; i++) {
+
+                for (int j = 0; j < contributors[i].skills.length; j++) {
+                    if (reqskills.equals(contributors[i].skills[j])) {
+                        if (reqskills.skillLevel >= selectproject.requiredSkills[j].skillLevel) {
+                            assignedcontributors[j] = contributors[i].name;
+                        }
+                    }
+                }
+            }
+            Arrays.sort(assignedcontributors);
+            String assignedname = assignedcontributors[0];
+        }
+
     }
+
 }

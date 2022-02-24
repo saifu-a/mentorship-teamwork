@@ -55,6 +55,7 @@ public class Main {
             int score = Integer.parseInt(temp[2]);
             int bestBefore = Integer.parseInt(temp[3]);
             int reqContributors = Integer.parseInt(temp[4]);
+            double decidingFactor = (double)score/days;
             Skill[] reqSkills = new Skill[reqContributors];
 
             for (int j = 0; j < reqContributors; j++) {
@@ -64,7 +65,7 @@ public class Main {
                 reqSkills[j] = new Skill(skillName, skillLevel);
             }
 
-            projects[i] = new Project(name, days, score, bestBefore, reqContributors, reqSkills);
+            projects[i] = new Project(name, days, score, bestBefore, decidingFactor, reqContributors,  reqSkills);
         }
 
         System.out.println(Arrays.toString(projects));

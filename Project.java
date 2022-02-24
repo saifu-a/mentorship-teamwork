@@ -5,14 +5,16 @@ public class Project {
     public int numberOfDays;
     public int score;
     public int bestBefore;
+    public double decidingFactor;
     public int requireContributors;
     public Skill[] requiredSkills;
 
-    public Project(String name, int numberOfDays, int score, int bestBefore, int requireContributors, Skill[] requiredSkills) {
+    public Project(String name, int numberOfDays, int score, int bestBefore, double decidingFactor, int requireContributors, Skill[] requiredSkills) {
         this.name = name;
         this.numberOfDays = numberOfDays;
         this.score = score;
         this.bestBefore = bestBefore;
+        this.decidingFactor = decidingFactor;
         this.requireContributors = requireContributors;
         this.requiredSkills = requiredSkills;
     }
@@ -24,6 +26,7 @@ public class Project {
                 ", numberOfDays=" + numberOfDays +
                 ", score=" + score +
                 ", bestBefore=" + bestBefore +
+                ", decidingFactor=" + decidingFactor + 
                 ", requireContributors=" + requireContributors +
                 ", skills=" + Arrays.toString(requiredSkills) +
                 '}';

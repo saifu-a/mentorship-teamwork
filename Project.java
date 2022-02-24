@@ -6,8 +6,16 @@ public class Project {
     public int score;
     public int bestBefore;
     public int requireContributors;
-    public String[] roles;
-    public Skill[] skills;
+    public Skill[] requiredSkills;
+
+    public Project(String name, int numberOfDays, int score, int bestBefore, int requireContributors, Skill[] requiredSkills) {
+        this.name = name;
+        this.numberOfDays = numberOfDays;
+        this.score = score;
+        this.bestBefore = bestBefore;
+        this.requireContributors = requireContributors;
+        this.requiredSkills = requiredSkills;
+    }
 
     @Override
     public String toString() {
@@ -17,8 +25,7 @@ public class Project {
                 ", score=" + score +
                 ", bestBefore=" + bestBefore +
                 ", requireContributors=" + requireContributors +
-                ", roles=" + Arrays.toString(roles) +
-                ", skills=" + Arrays.toString(skills) +
+                ", skills=" + Arrays.toString(requiredSkills) +
                 '}';
     }
 }

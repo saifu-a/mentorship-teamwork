@@ -48,6 +48,25 @@ public class Main {
 
         Project[] projects = new Project[numberOfProjects];
 
-        for (int i = 0; i < numberOfProjects)
+        for (int i = 0; i < numberOfProjects; i++) {
+            String[] temp = allLines[nextProjectPosition].split("\\s+");
+            String name = temp[0];
+            int days = Integer.parseInt(temp[1]);
+            int score = Integer.parseInt(temp[2]);
+            int bestBefore = Integer.parseInt(temp[3]);
+            int reqContributors = Integer.parseInt(temp[4]);
+            Skill[] reqSkills = new Skill[reqContributors];
+
+            for (int j = 0; j < reqContributors; j++) {
+                String[] temp1 = allLines[nextProjectPosition + j + 1].split("\\s+");
+                String skillName = temp1[0];
+                int skillLevel = Integer.parseInt(temp1[1]);
+                reqSkills[j] = new Skill(skillName, skillLevel);
+            }
+
+            projects[i] = new Project(name, days, score, bestBefore, reqContributors, reqSkills);
+        }
+
+        System.out.println(Arrays.toString(projects));
     }
 }

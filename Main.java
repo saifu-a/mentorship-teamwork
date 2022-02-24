@@ -19,6 +19,7 @@ public class Main {
         int numberOfContributors = Integer.parseInt(String.valueOf(allLines[0].charAt(0)));
         int numberOfProjects = Integer.parseInt(String.valueOf(allLines[0].charAt(2)));
 
+        // Reading contributors
         int nextContributorPosition = 1;
 
         Contributor[] contributors = new Contributor[numberOfContributors];
@@ -40,6 +41,13 @@ public class Main {
             nextContributorPosition += skillCount + 1;
         }
 
-        System.out.println(Arrays.toString(contributors));
+//        System.out.println(Arrays.toString(contributors));
+
+        // Reading projects
+        int nextProjectPosition = nextContributorPosition;
+
+        Project[] projects = new Project[numberOfProjects];
+
+        for (int i = 0; i < numberOfProjects)
     }
 }

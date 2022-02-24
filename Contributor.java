@@ -1,3 +1,5 @@
+import java.util.Arrays;
+
 public class Contributor {
     public String name;
     public Skill[] skills;
@@ -7,5 +9,14 @@ public class Contributor {
         this.name = name;
         this.skills = skills;
         this.skillCount = skillCount;
+    }
+
+    @Override
+    public String toString() {
+        return "Contributor{" +
+                "name='" + name + '\'' +
+                ", skills=" + Arrays.toString(skills) +
+                ", skillCount=" + skillCount +
+                '}';
     }
 }

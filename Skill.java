@@ -6,4 +6,12 @@ public class Skill {
         this.skillName = skillName;
         this.skillLevel = skillLevel;
     }
+
+    @Override
+    public String toString() {
+        return "Skill{" +
+                "skillName='" + skillName + '\'' +
+                ", skillLevel=" + skillLevel +
+                '}';
+    }
 }

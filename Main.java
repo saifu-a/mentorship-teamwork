@@ -69,6 +69,16 @@ public class Main {
             nextProjectPosition += reqContributors + 1;
         }
 
+        for (int i = 0; i < numberOfProjects; i++) {
+            for (int j = 0; j < numberOfProjects - 1; j++) {
+                if (projects[j].decidingFactor < projects[j + 1].decidingFactor)   {
+                    Project temp = projects[j];
+                    projects[j] = projects[j + 1];
+                    projects[j + 1] = temp;
+                }
+            }
+        }
+
         System.out.println(Arrays.toString(projects));
     }
 }
